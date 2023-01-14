@@ -2,7 +2,7 @@
 
 Examples on how to protect your program from reverse engineering, so that your software isn't used without authorization.
 
-Thank you @ghosted-oce
+Thank you [@ghosted-oce](https://github.com/ghosted-oce)
 
 ## **Bugs**
 

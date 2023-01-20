@@ -10,3 +10,5 @@
  - Anti-VM
  - Process check
  - Window name check (maybe)
+ - Anti-Dump
+ - Driver check for any bad loaded drivers you might not want around

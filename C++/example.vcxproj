@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="auth.hpp" />
     <ClInclude Include="lazy.h" />
+    <ClInclude Include="protection.h" />
     <ClInclude Include="skStr.h" />
   </ItemGroup>
   <ItemGroup>

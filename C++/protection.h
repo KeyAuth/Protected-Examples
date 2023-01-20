@@ -1,14 +1,8 @@
+#pragma once
 #include <windows.h>
 #include <thread>
 #include "lazy.h"
-#include "skCrypt.h"
-
-typedef NTSTATUS(WINAPI* tNTQSI)(
-	ULONG SystemInformationClass,
-	PVOID SystemInformation,
-	ULONG SystemInformationLength,
-	PULONG ReturnLength
-	);
+#include "skStr.h"
 
 inline bool hide_thread(HANDLE thread)
 {
@@ -58,5 +52,15 @@ inline int remote_is_present()
 
 int is_debugger_present()
 {
-	return LI_FN(IsDebuggerPresent).forwarded_safe_cached()();
+	return LI_FN(IsDebuggerPresent).forwarded_safe_cached()(); // i am very well aware i couldve just called this in the thread, but this looks better imo & has the same performance
+}
+
+
+void Protection_Loop()
+{
+	hide_thread(LI_FN(GetCurrentThread).forwarded_safe_cached());
+	if (thread_context()) *(uintptr_t*)(0) = 1;
+	if (remote_is_present()) *(uintptr_t*)(0) = 1;
+	if (is_debugger_present()) *(uintptr_t*)(0) = 1;
+	std::this_thread::sleep_for(std::chrono::milliseconds(10)); // increase / decrease depending on how your computer handles it
 }

@@ -35,6 +35,9 @@
     <ClInclude Include="lazy.h">
       <Filter>Header Files\Protection</Filter>
     </ClInclude>
+    <ClInclude Include="protection.h">
+      <Filter>Header Files\Protection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="library_x64.lib">

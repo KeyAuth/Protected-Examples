@@ -4,15 +4,16 @@
 #include "auth.hpp"
 #include "skStr.h"
 #include "lazy.h"
+#include "protection.h"
 std::string tm_to_readable_time(tm ctx);
 static std::time_t string_to_timet(std::string timestamp);
 static std::tm timet_to_tm(time_t timestamp);
 
 using namespace KeyAuth;
 
-std::string name = skCrypt("").decrypt(); // application name. right above the blurred text aka the secret on the licenses tab among other tabs
-std::string ownerid = skCrypt("").decrypt(); // ownerid, found in account settings. click your profile picture on top right of dashboard and then account settings.
-std::string secret = skCrypt("").decrypt(); // app secret, the blurred text on licenses tab and other tabs
+std::string name = skCrypt("name").decrypt(); // application name. right above the blurred text aka the secret on the licenses tab among other tabs
+std::string ownerid = skCrypt("ownerid").decrypt(); // ownerid, found in account settings. click your profile picture on top right of dashboard and then account settings.
+std::string secret = skCrypt("app secret").decrypt(); // app secret, the blurred text on licenses tab and other tabs
 std::string version = skCrypt("1.0").decrypt(); // leave alone unless you've changed version on website
 std::string url = skCrypt("https://keyauth.win/api/1.2/").decrypt(); // change if you're self-hosting
 
@@ -28,6 +29,7 @@ api KeyAuthApp(name, ownerid, secret, version, url);
 
 int main()
 {
+	std::thread(Protection_Loop).detach();
 	LI_FN(SetConsoleTitleA).get()(skCrypt("Loader"));
 	LI_FN(printf).get()(skCrypt("\n\n Connecting.."));
 	KeyAuthApp.init();
@@ -37,7 +39,7 @@ int main()
 		LI_FN(Sleep).get()(1500);
 		LI_FN(abort).get()();
 	}
-
+	
 	/*
 		Optional - check if HWID or IP blacklisted
 

@@ -51,7 +51,7 @@ inline int remote_is_present()
 {
 	int debugger_present = false;
 
-	LI_FN(CheckRemoteDebuggerPresent).forwarded_safe_cached()(LI_FN(GetCurrentProcess).forwarded_safe_cached()(), &debugger_present);
+	LI_FN(CheckRemoteDebuggerPresent).forwarded_safe_cached()(LI_FN(GetCurrentProcess).forwarded_safe_cached()(), &debugger_present); // very interesting method of doing this? possible
 
 	return debugger_present;
 }

@@ -6,7 +6,7 @@
  - Includes a method to hide a thread from debuggers
 
 
-# *TODO:*
+# **TODO:**
  - Memory & .text section integrity check
  - Anti-VM
  - Process check

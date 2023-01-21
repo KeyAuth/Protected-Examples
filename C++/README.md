@@ -7,6 +7,7 @@
 
 
 # *TODO:*
+ - Memory & .text section integrity check
  - Anti-VM
  - Process check
  - Window name check (maybe)

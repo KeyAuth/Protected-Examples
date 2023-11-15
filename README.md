@@ -1,4 +1,4 @@
-# Protected-Examples
+# Protected-Examples : Please star 🌟
 
 Examples on how to protect your program from reverse engineering, so that your software isn't used without authorization.
 
